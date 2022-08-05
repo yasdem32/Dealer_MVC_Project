@@ -15,7 +15,8 @@ namespace Entities.ClassMyEntity
         [Required]
         public DateTime CreatedOnByDate { get; set; }
         [Required]
-        public DateTime ModifiedOnByDate { get; set; }
+        public DateTime ModifiedOnByDate { get; set; } 
+        //sdfsd
         [Required]
         public string ModifiedUserName { get; set; }
     }
