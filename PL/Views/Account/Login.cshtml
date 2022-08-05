@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <title>RMTech Giriş Paneli</title>
+    <link rel="icon" type="image/x-icon" href="/Content/rmtect.png" />
+    <!-- Common Styles Starts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="/Admin_Assest2/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Admin_Assest2/assets/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/Admin_Assest2/assets/css/structure.css" rel="stylesheet" type="text/css" />
+    <link href="/Admin_Assest2/plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
+    <link href="/Admin_Assest2/plugins/highlight/styles/monokai-sublime.css" rel="stylesheet" type="text/css" />
+    <!-- Common Styles Ends -->
+    <link href="/Admin_Assest2/assets/css/loader.css" rel="stylesheet" type="text/css" />
+    <link href="/Admin_Assest2/assets/css/authentication/auth_2.css" rel="stylesheet" type="text/css">
+    <!-- Page Level Plugin/Style Ends -->
+</head>
+<body class="login-two">
+
+    <!--  Loader Ends -->
+    <!-- Main Body Starts -->
+    <div class="container-fluid login-two-container">
+        <div class="row main-login-two">
+            <div class="col-xl-8 col-lg-7 col-md-7 d-none d-md-block p-0">
+                <div class="login-bg">
+                    <div class="left-content-area">
+                        <img src="/Content/rmtect.png" class="logo" />
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-5 col-md-5 p-0">
+                <form action="/Account/Login" method="post">
+                    <div class="login-two-start">
+                        <h6 class="right-bar-heading px-3 mt-2 text-dark text-center font-30 text-uppercase">Giriş</h6>
+                        <p class="text-center text-muted mt-1 mb-3 font-14">Giriş yapmak için bilgilerinizi giriniz</p>
+                        <div class="login-two-inputs mt-5">
+                            <input type="text" placeholder="Kullanıcı Adı" name="Username" />
+                            <i class="las la-user-alt"></i>
+                        </div>
+                        <div class="login-two-inputs mt-4">
+                            <input type="password" placeholder="Şifre" name="Password" />
+                            <i class="las la-lock"></i>
+                        </div>
+
+                        <div class="login-two-inputs mt-5 text-center d-flex">
+                            <button class="ripple-button ripple-button-primary w-100 btn-login ml-3 mr-3" type="submit">
+                                <div class="ripple-ripple js-ripple">
+                                    <span class="ripple-ripple__circle"></span>
+                                </div>
+                                Giriş Yap
+                            </button>
+
+                        </div>
+                        <br />
+                        <center>
+                            <a class="btn btn-warning" href="/Account/Register">
+                                <span class="fa fa-accusoft"></span>
+                                Hesabınız yok mu ?
+                            </a>
+                        </center>
+                        <br />
+                        @*<br/>
+                            <center>
+                                <a class="btn btn-warning" href="/FirinAccount/Register">
+                                    <span class="fa fa-accusoft"></span>
+                                   Firin Hesabınız yok mu ?
+                                </a>
+                            </center>
+                            <br/>*@
+                        @if (TempData["Durum"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @TempData["Durum"].ToString()
+                            </div>
+                        }
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- Main Body Ends -->
+    <!-- Page Level Plugin/Script Starts -->
+    <script src="/Admin_Assest2/assets/js/loader.js"></script>
+    <script src="/Admin_Assest2/assets/js/libs/jquery-3.1.1.min.js"></script>
+    <script src="/Admin_Assest2/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Admin_Assest2/assets/js/authentication/auth_2.js"></script>
+    <!-- Page Level Plugin/Script Ends -->
+</body>
+
+<!-- Mirrored from xatoadmin-demo1.web.app/ltr/auth_login_2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jan 2022 08:32:18 GMT -->
+</html>
+@*<h2>Login</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Password", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Login" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        @Html.ActionLink("Click here to Signup", "Signup")
+    </div>*@
+
